@@ -1,4 +1,6 @@
-package javagames.util;
+package javagames.example.ch6;
+
+import javagames.util.SimpleFramework;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
