@@ -13,6 +13,7 @@ public class SimpleFrameworkTemplate extends SimpleFramework {
     private  int name_index;
 
     SimpleFrameworkTemplate() {
+        appMaintainRatio = true;
         appTitle = "framework template";
         ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         names = ge.getAvailableFontFamilyNames();
