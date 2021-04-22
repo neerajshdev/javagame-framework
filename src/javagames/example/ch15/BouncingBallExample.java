@@ -1,15 +1,12 @@
 package javagames.example.ch15;
 
-import javagames.util.Matrix3x3f;
-import javagames.util.SimpleFramework;
-import javagames.util.Utility;
-import javagames.util.Vector2f;
+import javagames.util.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-public class BouncingBallExample extends SimpleFramework {
+public class BouncingBallExample extends FullScreenFramework {
     class Ball{
         Vector2f position;
         Vector2f velocity;
@@ -31,10 +28,11 @@ public class BouncingBallExample extends SimpleFramework {
 
 
     BouncingBallExample() {
-        appWidth = 600;
-        appHeight = 600;
+        appWidth =  1600;
+        appHeight =  900;
         appBackground = Color.white;
         appMaintainRatio = true;
+        appBorder = Color.black;
     }
 
     @Override
@@ -58,6 +56,9 @@ public class BouncingBallExample extends SimpleFramework {
     @Override
     protected void processInput(float t) {
         super.processInput(t);
+        if (keyboard.keyDownOnce(KeyEvent.VK_F4)) {
+            shutDown();
+        }
         if(keyboard.keyDownOnce(KeyEvent.VK_SPACE)) {
             createBalls();
         }

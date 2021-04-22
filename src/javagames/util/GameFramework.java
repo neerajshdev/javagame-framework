@@ -62,22 +62,22 @@ public abstract class GameFramework extends JFrame implements Runnable {
             gameThread.start();
       }
 
-      protected void setupViewport() {
-            int vw = (int) (getScreenWidth() * appBorderScale);
-            int vh = (int) (getScreenHeight() * appBorderScale);
-            vx = (getScreenWidth() - vw) / 2;
-            vy = (getScreenHeight() - vh) / 2;
+      protected void setupViewport(int width, int height) {
+            int w = (int) (width * appBorderScale);
+            int h = (int) (height * appBorderScale);
+            vx = (width - w) / 2;
+            vy = (height - h) / 2;
             //maintain the ratio
             float ratio = appWorldWidth / appWorldHeight;
-            this.vw = vw;
-            this.vh = (int) (vw / ratio);
-            if (this.vh > vh) {
-                  this.vh = vh;
-                  this.vw = (int) (ratio * vh);
+            this.vw = w;
+            this.vh = (int) (w / ratio);
+            if (this.vh > h) {
+                  this.vh = h;
+                  this.vw = (int) (ratio * h);
             }
             //recenter
-            vx += (int) ((vw - this.vw) / 2);
-            vy += (int) ((vh - this.vh) / 2);
+            vx += (int) ((w - this.vw) / 2);
+            vy += (int) ((h - this.vh) / 2);
       }
 
       private void disableCursor() {
@@ -96,8 +96,9 @@ public abstract class GameFramework extends JFrame implements Runnable {
             long lastTime = System.nanoTime();
             long currentTime = System.nanoTime();
             while (running) {
+                  currentTime = System.nanoTime();
                   long elapsedTime = currentTime - lastTime;
-                  gameLoop((float) (elapsedTime * 1E-9));
+                  gameLoop((float) (elapsedTime * 1e-9));
                   lastTime = currentTime;
             }
             terminate();
@@ -155,7 +156,7 @@ public abstract class GameFramework extends JFrame implements Runnable {
       }
 
       protected void terminate() {
-
+            System.out.println("application terminate");
       }
 
       /* end of the game loop
@@ -182,12 +183,12 @@ public abstract class GameFramework extends JFrame implements Runnable {
 
       protected Matrix3x3f getViewportTransform() {
             return Utility.createViewport(appWorldWidth, appWorldHeight
-                    , canvas.getWidth() - 1, canvas.getHeight() - 1);
+                    , getScreenWidth(), getScreenHeight());
       }
 
       protected Matrix3x3f getReverseViewportTransform() {
             return Utility.createReverseViewport(appWorldWidth, appWorldHeight
-                    , canvas.getWidth(), canvas.getHeight());
+                    , getScreenWidth(), getScreenHeight());
       }
 
       protected Vector2f getWorldMousePos() {
@@ -197,8 +198,8 @@ public abstract class GameFramework extends JFrame implements Runnable {
       }
 
       protected Vector2f getRelativeWorldMousePos() {
-            float sx = appWorldWidth / (canvas.getWidth() - 1);
-            float sy = appWorldHeight / (canvas.getHeight() - 1);
+            float sx = appWorldWidth / (getScreenWidth() - 1);
+            float sy = appWorldHeight / (getScreenHeight() - 1);
             Matrix3x3f world = Matrix3x3f.scale(sx, -sy);
             Point p = mouse.getPosition();
             return world.mul(new Vector2f(p.x, p.y));
@@ -212,12 +213,14 @@ public abstract class GameFramework extends JFrame implements Runnable {
             }
       }
 
-      private void shutDown() {
+      protected void shutDown() {
             if(Thread.currentThread() != gameThread) {
-                  running = false;
                   try {
+                        running = false;
+                        System.out.println(running);
                         gameThread.join();
                         onShutDown();
+                        System.exit(0);
                   } catch (InterruptedException e) {
                         e.printStackTrace();
                   }
