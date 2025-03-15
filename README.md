@@ -1,18 +1,34 @@
-# Java Game Framework
+# Java Game Framework - Learning Project
 
-A comprehensive framework for building 2D games in Java, providing essential functionality for game development including graphics rendering, input handling, sound processing, resource management, and more.
+A learning-focused framework for understanding 2D game development concepts in Java. This project provides essential functionality examples for educational purposes including graphics rendering, input handling, sound processing, resource management, and more.
 
 ## Project Overview
 
-This project is a Java-based game development framework that provides the foundation for creating 2D games. It includes several key components:
+This project is **not a complete game framework** but rather a Java-based educational tool designed to help learners understand the fundamentals of creating 2D games. It's freely available for learning purposes and demonstrates several key game development components:
 
-- **Game Loop Management**: Efficient game loop with timing control
-- **Input Handling**: Keyboard and mouse input management
-- **Graphics Rendering**: 2D rendering capabilities
-- **Window Management**: Fullscreen and windowed mode support
-- **Vector & Matrix Math**: 2D vector and matrix operations for game physics and transformations
-- **Resource Loading**: Management of game assets like images and sounds
-- **Sound System**: Audio playback functionality
+- **Game Loop Management**: Examples of efficient game loops with timing control
+- **Input Handling**: Keyboard and mouse input management demonstrations
+- **Graphics Rendering**: Basic 2D rendering capabilities for learning
+- **Window Management**: Fullscreen and windowed mode support examples
+- **Vector & Matrix Math**: 2D vector and matrix operations for understanding game physics and transformations
+- **Resource Loading**: Examples of managing game assets like images and sounds
+- **Sound System**: Basic audio playback functionality for educational purposes
+
+## Educational Purpose
+
+This framework is designed as a learning resource that can help you:
+
+- Understand core game development concepts
+- Learn how game loops and timing work
+- Practice implementing input handling in games
+- Explore 2D graphics rendering in Java
+- Experiment with different game components in a structured environment
+
+The code is freely available for anyone interested in learning game development. You are encouraged to:
+- Study the examples
+- Modify the code to see how changes affect behavior
+- Build your own experimental games using the framework as a foundation
+- Use it as a reference for understanding game development patterns
 
 ## Project Structure
 
@@ -150,8 +166,13 @@ The examples in the `src/javagames/example/` directory are organized by chapters
 
 ## License
 
-[Add licensing information here]
+This project is freely available for educational and learning purposes. You may:
+- Use the code for personal learning
+- Modify and experiment with the code
+- Use it as a reference for your own educational projects
+
+This is not intended for commercial use or as a production-ready game engine.
 
 ## Acknowledgments
 
-[Add acknowledgments here] 
+This learning project is designed to help beginners understand game development concepts in Java. It may be based on or inspired by various game development tutorials and educational resources. 
